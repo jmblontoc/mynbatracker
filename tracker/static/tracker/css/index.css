@@ -1,0 +1,89 @@
+h1#header {
+
+	font-family: Arial;
+	font-weight: normal;
+	text-align: center;
+}
+
+#container:after {
+	content: "";
+	display: table;
+	clear: both;
+}
+
+.col {
+	float: left;
+	width: 33.33%;
+}
+
+body {
+	background: azure;
+}
+
+table.daily-table {
+	font-family: Arial;
+}
+
+td.daily-td, table.daily-table {
+	border: 1px solid #e6e6e6;
+	border-collapse: collapse;
+	border-radius: 10px;
+}
+
+td.daily-td {
+	padding: 20px;
+	width: 200px;
+}
+
+td.daily-td div {
+	text-align: center;
+}
+
+#logo {
+	margin: 0 auto;
+	display: block;
+	height: 150px;
+}
+
+.stats {
+	font-size: 0.75rem;
+	margin-top: 6px;
+	font-style: italic;
+}
+
+.score {
+	margin-top: 10px;
+	font-size: 1.5rem;
+}
+
+.win-score {
+	font-weight: bold;
+}
+
+.date-sub {
+	text-align: center;
+}
+
+table.standings-table {
+	font-family: Arial;
+	margin: 0 auto;
+	border: solid 1px #e6e6e6;
+	border-collapse: collapse;
+}
+
+table.standings-table td, th {
+	border: solid 1px #e6e6e6;
+	padding: 15px;
+}
+
+table.standings-table td > * {
+	vertical-align: middle;
+}
+
+.top8 {
+	background-color: #B8DEC8;
+}
+
+footer {
+	margin-top: 30px;
+}

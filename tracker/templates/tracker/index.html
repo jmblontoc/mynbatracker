@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<title>My NBA Tracker</title>
+
+		{% load static %}
+		
+		<link rel="stylesheet" href="{% static 'tracker/css/index.css' %}">
+
+		<link rel="icon" href="http://a4.espncdn.com/combiner/i?img=%2Fi%2Fespn%2Fmisc_logos%2F500%2Fnba.png">
+	</head>
+
+	<body>
+		<div id="container">
+			<img src='http://a4.espncdn.com/combiner/i?img=%2Fi%2Fespn%2Fmisc_logos%2F500%2Fnba.png' id='logo'/>
+			<h1 id="header">My NBA Tracker </h1>
+			<p class='date-sub'><em>({{ today|date:"F d, Y h:i a" }}) </em></p>
+			<div class='col'>
+				<table class='daily-table'>
+					<tbody>
+						
+						{% for game in data.game_data %}
+							<tr>
+								<td class='daily-td'>
+									<div class='team-div'>
+										<img src='{{ game.logo1 }}' class='team-logo' height='70'>
+										<div>{{ game.team1_name }}</div>
+										{% if game.team1_score > game.team2_score %}
+											<div class='win-score score'>{{ game.team1_score }}</div>
+										{% else %}
+											<div class='score'>{{ game.team1_score }}</div>
+										{% endif %}
+
+										<div class='stats'>
+											{{ game.team1_pog }} - {{ game.team1_points }}
+										</div>
+									</div>
+								</td>
+								<td class='daily-td'>
+									<div class='team-div'>
+										<img src='{{ game.logo2 }}' class='team-logo' height="70">
+										<div>{{ game.team2_name }}</div>
+										{% if game.team2_score < game.team1_score %}
+											<div class='score'>{{ game.team2_score }}</div>
+										{% else %}
+											<div class='win-score score'>{{ game.team2_score }}</div>
+										{% endif %}
+										<div class='stats'>
+											{{ game.team2_pog }} - {{ game.team2_points }}
+										</div>
+									</div>
+								</td>
+							</tr>
+						{% endfor %}
+					</tbody>
+				</table>
+			</div>
+			<div class='col'>
+				<table class='standings-table'>
+					<tr>
+						<th colspan="3">Eastern Conference</th>
+					</tr>
+					{% for team in standings.east_data %}
+						{% if forloop.counter < 9 %}
+							<tr class='top8'>
+								<td>
+									<img src='{{ team.logo }}' height='40'>
+									<em>({{ forloop.counter }})</em>
+									{{ team.name }}
+								</td>
+								<td align='right'>{{ team.wins }}</td>
+								<td align='right'>{{ team.losses }}</td>
+							</tr>
+						{% else %}
+							<tr>
+								<td>
+									<img src='{{ team.logo }}' height='40'>
+									{{ team.name }}
+								</td>
+								<td align='right'>{{ team.wins }}</td>
+								<td align='right'>{{ team.losses }}</td>
+							</tr>
+						{% endif %}
+					{% endfor %}
+				</table>
+			</div>
+
+			<div class='col'>
+				<table class='standings-table'>
+					<tr>
+						<th colspan="3">Western Conference</th>
+					</tr>
+					{% for team in standings.west_data %}
+						{% if forloop.counter < 9 %}
+							<tr class='top8'>
+								<td>
+									<img src='{{ team.logo }}' height='40'>
+									<em>({{ forloop.counter }})</em>
+									{{ team.name }}
+								</td>
+								<td align='right'>{{ team.wins }}</td>
+								<td align='right'>{{ team.losses }}</td>
+							</tr>
+						{% else %}
+							<tr>
+								<td>
+									<img src='{{ team.logo }}' height='40'>
+									{{ team.name }}
+								</td>
+								<td align='right'>{{ team.wins }}</td>
+								<td align='right'>{{ team.losses }}</td>
+							</tr>
+						{% endif %}
+					{% endfor %}
+				</table>
+			</div>
+			
+		</div>
+		<footer>
+			<em>Source: tv5.espn.com</em>
+		</footer>
+	</body>
+</html>
