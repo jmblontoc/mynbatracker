@@ -189,6 +189,7 @@ def get_standings():
 
 		team_data['wins'] = list(records_list[index].children)[0].contents[0].contents[0]
 		team_data['losses'] = list(records_list[index].children)[1].contents[0].contents[0]
+		team_data['streak'] = list(records_list[index].children)[11].contents[0].contents[0]
 
 		east_data.append(team_data)
 
@@ -215,6 +216,7 @@ def get_standings():
 
 		team_data['wins'] = list(records_list[index].children)[0].contents[0].contents[0]
 		team_data['losses'] = list(records_list[index].children)[1].contents[0].contents[0]
+		team_data['streak'] = list(records_list[index].children)[11].contents[0].contents[0]
 
 		west_data.append(team_data)
 
